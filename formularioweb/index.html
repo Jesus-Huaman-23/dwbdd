@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="estilos.css" class="rel">
+</head>
+<body>
+    <form action="" id="formulario" class="mostrar">
+        <h2>REGISTRATE</h2>
+        <img class="imglogin" src="img/login2.jpg" alt="" width="200" height="150" title="">
+        <br>
+        <br>
+        <input type="email" placeholder="Escribe tu email" id="emailRegistrate">
+        <br>
+        <br>
+        <input type="password" placeholder="Escribe tu password" id="passwordRegistrate">
+        <br><br>
+        <input type="button" value="Crear cuenta" id="btnRegistrar">
+        <input type="button" value="Iniciar Sesión" id="btnIniciarSesion">
+        <br><br>
+        <img id="btnFacebook" class="facebook" src="img/facebook.jpg" alt="Boton facebook" width="205" height="42"
+            title="">
+        <br><br>
+        <img id="btnGoogle" class="google" src="img/google2.png" alt="Boton google" width="205" height="42">
+    </form>
+    <div class="container ocultar" id="contenidoDeLaWeb">
+        <input type="button" value="cerrar Sesión" id="btnCerrarSesion">
+        <h1>Consolas de VideoJuegos en <span>¡OFERTA!</span></h1>
+        <img class="carrito" src="img/carrito.jpg" width="70" height="70">
+        <div class="resultado" id="resultado"></div><br><br>
+        <div class="comen">
+            <div id="comentarios"></div>
+            <h2 class="titulocomen">Escribe tu comentario</h2>
+            <input type="text" placeholder="Escribe el titulo" id="txttitulo"><br><br>
+            <input type="text" placeholder="Escribe la descripción" id="txtdescrip"><br><br>
+            <input type="button" value="Publicar" id="btnpublicar">
+        </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-firestore.js"></script>
+
+    <script type="module">
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyBNXPUr1bLzoHSGSrUblj_hqAl65a5HpkY",
+            authDomain: "paginaweb1-3b08d.firebaseapp.com",
+            projectId: "paginaweb1-3b08d",
+            storageBucket: "paginaweb1-3b08d.appspot.com",
+            messagingSenderId: "72613847866",
+            appId: "1:72613847866:web:da816cac6cdae27685a603"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+
+        // llamando al Dom o al html
+        const btnRegistrar = document.getElementById("btnRegistrar");
+        const btnIniciarSesion = document.getElementById("btnIniciarSesion");
+        const formulario = document.getElementById("formulario");
+        const btnCerrarSesion = document.getElementById('btnCerrarSesion')
+        const contenidoDeLaWeb = document.getElementById("contenidoDeLaWeb");
+        const btnGoogle = document.getElementById("btnGoogle");
+        const btnFacebook = document.getElementById("btnFacebook");
+
+        // Dandole una función al botom btnRegistrar
+        btnRegistrar.addEventListener('click', () => {
+            let emailRegistrate = document.getElementById("emailRegistrate").value;
+            let passwordRegistrate = document.getElementById("passwordRegistrate").value;
+            console.log(emailRegistrate);
+            console.log(passwordRegistrate);
+
+            firebase.auth().createUserWithEmailAndPassword(emailRegistrate, passwordRegistrate)
+                .then((userCredential) => {
+                    // Signed in
+                    var user = userCredential.user;
+                    console.log("Inicio de sesión correcto");
+                    cargarJSON();
+                    formulario.classList.replace('mostrar', 'ocultar');
+                    contenidoDeLaWeb.classList.replace('ocultar', 'mostrar');
+                })
+                .catch((error) => {
+                    var errorCode = error.code;
+                    var errorMessage = error.message;
+                    alert(errorMessage);
+                    //console.log(errorMessage);
+                });
+
+        });
+
+        btnIniciarSesion.addEventListener("click", () => {
+            let emailRegistrate = document.getElementById("emailRegistrate").value;
+            let passwordRegistrate = document.getElementById("passwordRegistrate").value;
+
+            firebase.auth().signInWithEmailAndPassword(emailRegistrate, passwordRegistrate)
+                .then((userCredential) => {
+                    var user = userCredential.user;
+                    console.log("Inicio de sesión correcto");
+                    cargarJSON();
+                    formulario.classList.replace('mostrar', 'ocultar');
+                    contenidoDeLaWeb.classList.replace('ocultar', 'mostrar');
+                })
+                .catch((error) => {
+                    var errorCode = error.code;
+                    var errorMessage = error.message;
+                    alert(errorMessage);
+                });
+        })
+        // función cerrar sesión
+        btnCerrarSesion.addEventListener('click', () => {
+            firebase.auth().signOut()
+                .then(() => {
+                    // Sign-out successful.
+                    console.log("Serro sesión correctamente")
+                    formulario.classList.replace('ocultar', 'mostrar');
+                    contenidoDeLaWeb.classList.replace('mostrar', 'ocultar');
+
+                }).catch((error) => {
+                    // An error happened.
+
+                });
+        })
+
+        //función estado activo o inactivo
+        firebase.auth().onAuthStateChanged((user) => {
+            if (user) {
+                var uid = user.uid;
+                cargarJSON();
+                formulario.classList.replace('mostrar', 'ocultar');
+                contenidoDeLaWeb.classList.replace('ocultar', 'mostrar');
+
+            } else {
+                formulario.classList.replace('ocultar', 'mostrar');
+                contenidoDeLaWeb.classList.replace('mostrar', 'ocultar');
+            }
+        });
+
+        //funcion botom google
+        btnGoogle.addEventListener('click', () => {
+            var provider = new firebase.auth.GoogleAuthProvider();
+
+            firebase.auth()
+                .signInWithPopup(provider)
+                .then((result) => {
+                    var credential = result.credential;
+                    console.log("Inicio sesión correcto");
+                    cargarJSON();
+                }).catch((error) => {
+                    // Handle Errors here.
+                    var errorCode = error.code;
+                    var errorMessage = error.message;
+                    alert(errorMessage);
+                    console.log("error no inicio sesión");
+
+                });
+        });
+
+        //función botom de Facebook
+        btnFacebook.addEventListener('click', () => {
+            var provider = new firebase.auth.FacebookAuthProvider();
+
+            firebase
+                .auth()
+                .signInWithPopup(provider)
+                .then((result) => {
+
+                    var credential = result.credential;
+                    console.log("Inicio sesión correcto");
+                    cargarJSON();
+                })
+                .catch((error) => {
+
+                    var errorCode = error.code;
+                    var errorMessage = error.message;
+                    alert(errorMessage);
+                    console.log("error no inicio sesión");
+
+                });
+        });
+
+        //funcion jalar datos
+        function cargarJSON() {
+            fetch("data.json")
+                .then(function (res) {
+                    return res.json();
+                })
+                .then((data) => {
+                    console.log(data);
+                    let html = '';
+                    data.forEach((productos) => {
+                        html += `
+        <div class="producto">
+          <p><strong class=stnombre>  ${productos.nombre}</strong> </p>
+          <img src="${productos.img}" width="150px" class="imgProducto">
+          <strong class=stprecio> S/.${productos.precio} </strong>
+          <br>
+          <a class="ir" href="${productos.webpage}" target="_blank">comprar ahora </a> 
+        </div>
+      `;
+                    })
+                    document.getElementById('resultado').innerHTML = html;
+                })
+        }
+
+    </script>
+</body>
+
+</html>

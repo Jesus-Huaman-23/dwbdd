@@ -1,0 +1,60 @@
+[
+    {
+        "nombre":"Play Station 4",
+        "precio":2000,
+        "img": "https://prizmastore.pe/wp-content/uploads/2019/04/2.jpg",
+        "marca": "SONY",
+        "webpage": "https://www.falabella.com.pe/falabella-pe/product/121806475/Consola-Fat-PS4-Playstation-4-sony-500GB-con-2-mandos-y-FIFA-23/121806476?kid=shopp8fc&disp=1&pid=Google_w2a&gclid=EAIaIQobChMI2qz_icT7_wIVBy3UAR0LVQTTEAQYAiABEgKap_D_BwE"
+    },
+    {
+        "nombre":"XBOX Serie S",
+        "precio":1289,
+        "img": "https://mercury.vtexassets.com/arquivos/ids/11626450/GC00947.jpg?v=638097912419570000",
+        "marca": "Microsoft",
+        "webpage": "https://sodimac.falabella.com.pe/sodimac-pe/product/119585194/Consola-Xbox-Series-S-512GB/119585195?disp=1&gclid=EAIaIQobChMIwJKDiMf7_wIVAcKRCh3jnAfDEAQYAyABEgJhmfD_BwE&kid=shopp8fc&pid=Google_w2a"
+    },
+    {
+        "nombre":"Nintendo Switch ",
+        "precio":1529,
+        "img": "https://coolboxpe.vtexassets.com/arquivos/ids/283381/GC01586_1.jpg?v=1774798265",
+        "marca": "Nintendo",
+        "webpage": "https://www.plazavea.com.pe/preventa-consola-nintendo-switch-modelo-oled-blanco-100139401/p?gclid=EAIaIQobChMIv7HNzMf7_wIVwuhcCh3wswrAEAQYBSABEgIoRPD_BwE"
+    },
+    {
+        "nombre":"Play Station 5",
+        "precio":2199,
+        "img": "https://cdn.shopify.com/s/files/1/0072/1210/5775/products/p-ps5-3005718-3-e0d4b099-56a8-4ea3-9ae8-20e7a4805800_700x700.jpg?v=1622177441",
+        "marca": "SONY",
+        "webpage": "https://www.lacuracao.pe/curacao/consola-sony-digital-ps5--cfi-1215b?gclid=EAIaIQobChMI6rfJtcn7_wIVEjaRCh38vg1EEAQYBCABEgK-k_D_BwE"
+    },
+    {
+        "nombre":"Consola Xbox serie X 1TB",
+        "precio":2719,
+        "img": "https://promart.vteximg.com.br/arquivos/ids/776194-1000-1000/image-652d74aa2d0c4f6e9a7f007f6ce313cd.jpg?v=637497191012500000",
+        "marca": "Microsoft",
+        "webpage": "https://www.promart.pe/consola-xbox-serie-x-negro-1tb-99996024/p"
+    },
+    {
+        "nombre":"Steam Deck Consola Portátil",
+        "precio":2259,
+        "img": "https://phantom.pe/media/catalog/product/cache/2d2e350e73065c0f42c90f0a12869353/s/t/steam_deck_1_1.jpg",
+        "marca": "Quanta Computer",
+        "webpage": "https://www.falabella.com.pe/falabella-pe/product/121605140/Consola-Steam-Deck-16GB-RAM-64GB-SSD-BLACK/121605141?kid=shopp8fc&disp=1&pid=Google_w2a&gclid=EAIaIQobChMInOT-w837_wIV8kFIAB16eAYeEAQYBiABEgLtePD_BwE"
+    },
+    {
+        "nombre":"Backbone One para IOS - Xbox Edition",
+        "precio":449,
+        "img": "https://falabella.scene7.com/is/image/FalabellaPE/113895462_1?wid=800&hei=800&qlt=70",
+        "marca": "Microsoft",
+        "webpage": "https://www.falabella.com.pe/falabella-pe/product/113895459/Backbone-One-para-IOS-Xbox-Edition/113895462?kid=shopp8fc&disp=1&pid=Google_w2a&gclid=EAIaIQobChMI94vq0c77_wIVhDrUAR2CmQY_EAQYByABEgI1AfD_BwE"
+    },
+    {
+        "nombre":"Play Station 3",
+        "precio":499,
+        "img": "https://resim.epey.com/82197/m_sony-playstation-3-super-slim-12gb-1.jpg",
+        "marca": "SONY",
+        "webpage": "https://www.falabella.com.pe/falabella-pe/product/119528568/Consola-Sony-PlayStation-3-Super-Slim-500Gb-+-2-Mandos+-juegos./119528569?kid=shopp8fc&disp=1&pid=Google_w2a&gclid=EAIaIQobChMI9pbA4tD7_wIVAWuRCh0OQQQXEAQYAiABEgKci_D_BwE"
+    }
+     
+
+]
